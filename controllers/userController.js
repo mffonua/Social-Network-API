@@ -1,1 +1,5 @@
-4
+const { User } = require('../models');
+
+module.exports = {
+    
+}
