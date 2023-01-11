@@ -22,7 +22,7 @@ module.exports = {
     // get single thought
     getSingleThought(req, res) {
         Thought.findOne({ _id: req.params.thoughtId })
-        then((thought) => {
+        .then((thought) => {
             if(!thought) {
                 res.status(404).json({ message: 'No thought with that id'})
             } else {
@@ -62,7 +62,7 @@ module.exports = {
     createReaction(req, res) {
         Thought.findOneAndUpdate(
             { _id: req.params.thoughtId },
-            { $addToSet: { reactions: { reactionBody: req.body.reqctionBody, username: req.body.username }}},
+            { $addToSet: { reactions: { reactionBody: req.body.reactionBody, username: req.body.username }}},
             { runValidators: true, new: true })
             .then((reaction) => {
                 if(!reaction) {
